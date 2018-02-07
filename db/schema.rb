@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207100443) do
+ActiveRecord::Schema.define(version: 20180207103202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actors", force: :cascade do |t|
+    t.string "name"
+    t.integer "gender"
+    t.date "dob"
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "castings", force: :cascade do |t|
+    t.bigint "actor_id"
+    t.bigint "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_castings_on_actor_id"
+    t.index ["movie_id"], name: "index_castings_on_movie_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.text "synopsis"
+    t.string "poster_url"
+    t.integer "release_year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -34,4 +61,6 @@ ActiveRecord::Schema.define(version: 20180207100443) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "castings", "actors"
+  add_foreign_key "castings", "movies"
 end
