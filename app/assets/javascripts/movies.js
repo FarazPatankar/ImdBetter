@@ -22,8 +22,6 @@ $(document).ready(function() {
 
         $('#add-actor-modal').modal('close');
         Materialize.toast("" + actorName + " was successfully added", 3000, "rounded green");
-        debugger;
-        $('select').material_select();
       },
       error: function(err) {
         Materialize.toast("There was an issue addding the actor", 3000, "rounded red");
