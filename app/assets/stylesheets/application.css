@@ -14,3 +14,15 @@
  *= require_tree .
  *= require_self
  */
+
+.container {
+  padding: 25px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.mb-2 {
+  margin-bottom: 20px;
+}
