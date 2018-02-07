@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3 center-align">
+      <h2>Add a new actor</h2>
+      <% if flash[:error] %>
+        <h6 class="red-text"><%= flash[:error] %></h6>
+      <% end %>
+      <%= form_for @actor do |f| %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :gender %>
+          <%= f.select :gender, options_for_select([["Male", :male], ["Female", :female]]), {include_blank: "Please Select"} %>
+        </div>
+        <div class="field">
+          <%= f.label :photo_url, 'Photo Url' %>
+          <%= f.text_field :photo_url %>
+        </div>
+        <div class="field">
+          <%= f.label :dob %>
+          <%= f.date_field :dob %>
+        </div>
+        <div class="row center-align">
+          <%= f.submit "Add Actor", class: 'btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col s3">
+      <%= image_tag @actor.photo_url %>
+    </div>
+    <div class="col s9 center-align">
+      <h3><%= @actor.name %></h3>
+      <small>Born In: <%= @actor.dob %></small>
+    
+      <div class="row">
+        <h4 class="col s9 center-align">Movies</h4>
+        <div class="col s12">
+          <ul>
+            <% @actor.movies.each do |movie| %>
+              <li><%= movie.title %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
