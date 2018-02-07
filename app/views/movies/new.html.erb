@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3 center-align">
+      <h2>Add a new movie</h2>
+      <% if flash[:error] %>
+        <h6 class="red-text"><%= flash[:error] %></h6>
+      <% end %>
+      <%= form_for @movie do |f| %>
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </div>
+        <div class="field">
+          <%= f.label :synopsis %>
+          <%= f.text_area :synopsis %>
+        </div>
+        <div class="field">
+          <%= f.label :poster_url, 'Poster Url' %>
+          <%= f.text_field :poster_url %>
+        </div>
+        <div class="field">
+          <%= f.label :release_year %>
+          <%= f.number_field :release_year %>
+        </div>
+        <div class="row center-align">
+          <%= f.submit "Add Movie", class: 'btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

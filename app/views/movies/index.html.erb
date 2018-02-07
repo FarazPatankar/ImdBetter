@@ -1,0 +1,21 @@
+<div class="container">
+  <a class="btn right" href="/movies/new">Add an Movie</a>
+  <div class="row">
+    <div class="col s4">
+      <% @movies.each do |movie| %>
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag movie.poster_url, class: "materialboxed height-250" %>
+            <span class="card-title"><%= movie.title %></span>
+          </div>
+          <div class="card-content">
+            <p><%= movie.synopsis %></p>
+          </div>
+          <div class="card-action">
+            <a href="/movies/<%= movie.id %>">View More</a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col s3">
+      <%= image_tag @movie.poster_url %>
+    </div>
+    <div class="col s9 center-align">
+      <h3 class="movie-title" data-id="<%= @movie.id %>"><%= @movie.title %></h3>
+      <small>Released In: <%= @movie.release_year %></small>
+      <p><%= @movie.synopsis %></p>
+    
+      <div class="row">
+        <h4 class="col s9 center-align">Actors</h4>
+        <button class="col s3 btn mt-2 mb-2 add-actor-trigger">Add Actors</button>
+
+        <div class="col s12">
+          <ul class="actor-list">
+            <% @movie.actors.each do |actor| %>
+              <li><%= actor.name %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="add-actor-modal" class="modal">
+    <div class="modal-content">
+      <h4>Add an Actor</h4>
+      <select class="add-actor-select">
+        <%= options_for_select @available_actors.map { |actor| [actor.name, actor.id] }, { placeholder: "Select an Actor" } %>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="add-actor-btn btn">Add</button>
+    </div>
+  </div>
+</div>
